@@ -11,7 +11,7 @@
 Evaluated 5 alternative approaches to solve the Calendar widget configuration complexity problem:
 
 **Recommendation: Multi-Step Wizard (Staged Disclosure)**
-- BEST fit for blaze.tech user base (non-technical, healthcare focus)
+- BEST fit for HealthForge user base (non-technical, healthcare focus)
 - Addresses ALL prioritized problems (RICE analysis)
 - Balances guidance with flexibility (escape hatch)
 - Competitive differentiation (no competitor has this)
@@ -212,7 +212,7 @@ Conversational AI assistant instead of traditional wizard. User types natural la
 ## ALTERNATIVE 4: Template Marketplace (Community-Driven)
 
 ### Description
-Library of pre-built calendar configurations created by blaze.tech community. Users browse, preview, clone, customize.
+Library of pre-built calendar configurations created by HealthForge community. Users browse, preview, clone, customize.
 
 **Example:**
 ```
@@ -373,7 +373,7 @@ Timezone: [Auto-detect: Europe/Warsaw ▼] ⚠️ Cross-timezone?
 ### ⭐ **RECOMMENDED: Multi-Step Wizard (Alternative 1)**
 
 **Rationale:**
-1. **BEST fit for blaze.tech users:**
+1. **BEST fit for HealthForge users:**
    - 80% non-technical (Kasia persona)
    - Healthcare = high-stakes, need guidance
    - Timezone errors = patient care implications
@@ -388,7 +388,7 @@ Timezone: [Auto-detect: Europe/Warsaw ▼] ⚠️ Cross-timezone?
    - Retool: ❌ No wizard
    - Bubble: ❌ No wizard
    - OutSystems: ❌ Generic wizard only
-   - **blaze.tech:** ✅ Healthcare-specific calendar wizard
+   - **HealthForge:** ✅ Healthcare-specific calendar wizard
 
 4. **Measurable success:**
    - Completion rate: target 80%
@@ -452,4 +452,4 @@ Timezone: [Auto-detect: Europe/Warsaw ▼] ⚠️ Cross-timezone?
 
 ---
 
-**Alternative Solutions Evaluated** | Wizard = BEST Choice for blaze.tech
+**Alternative Solutions Evaluated** | Wizard = BEST Choice for HealthForge

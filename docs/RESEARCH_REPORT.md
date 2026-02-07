@@ -9,9 +9,9 @@
 
 ## EXECUTIVE SUMMARY
 
-Conducted comprehensive market research, competitive analysis, and medical use case identification for the Calendar Wizard feature in blaze.tech. Key findings:
+Conducted comprehensive market research, competitive analysis, and medical use case identification for the Calendar Wizard feature in HealthForge. Key findings:
 
-**Market Gap Identified:** None of the major low-code platforms (Retool, Bubble.io, OutSystems) have a dedicated calendar configuration wizard - all use manual configuration through property panels. This confirms an opportunity for blaze.tech.
+**Market Gap Identified:** None of the major low-code platforms (Retool, Bubble.io, OutSystems) have a dedicated calendar configuration wizard - all use manual configuration through property panels. This confirms an opportunity for HealthForge.
 
 **Primary Use Cases:** Patient appointment booking (most critical), Operating Room scheduling, Staff shifts management, Equipment booking, ED flow management.
 
@@ -111,9 +111,9 @@ Conducted comprehensive market research, competitive analysis, and medical use c
 | Retool | ✅ (FullCalendar) | ❌ | HIGH | Technical |
 | Bubble.io | ✅ (Multiple plugins) | ❌ | MEDIUM-HIGH | Semi-technical |
 | OutSystems | ✅ (Widget) | ❌ (Generic only) | HIGH | Enterprise/Technical |
-| **blaze.tech (proposed)** | ✅ | ✅ (Calendar-specific) | LOW | Non-technical |
+| **HealthForge (proposed)** | ✅ | ✅ (Calendar-specific) | LOW | Non-technical |
 
-**Key Insight:** **MARKET GAP** - no platform has a dedicated calendar configuration wizard. This is an opportunity for blaze.tech to differentiate.
+**Key Insight:** **MARKET GAP** - no platform has a dedicated calendar configuration wizard. This is an opportunity for HealthForge to differentiate.
 
 ---
 
@@ -121,7 +121,7 @@ Conducted comprehensive market research, competitive analysis, and medical use c
 
 ### 2.1 Platform Overview
 
-**What is blaze.tech:**
+**What is HealthForge:**
 - No-code platform specializing in **healthcare applications**
 - HIPAA & SOC 2 compliant
 - Used by Fortune 500s and healthcare startups
@@ -145,15 +145,15 @@ Conducted comprehensive market research, competitive analysis, and medical use c
 - HIPAA-compliant data security
 
 **Sources:**
-- [Blaze.tech Homepage](https://www.blaze.tech/)
-- [Healthcare Solutions](https://www.blaze.tech/industries/healthcare)
-- [Medical App Development](https://www.blaze.tech/post/medical-app-development)
+- [Blaze.tech Homepage](#)
+- [Healthcare Solutions](#)
+- [Medical App Development](#)
 
 ---
 
 ### 2.2 Healthcare Focus Advantage
 
-**Why blaze.tech is uniquely positioned:**
+**Why HealthForge is uniquely positioned:**
 
 1. **Healthcare-first platform** - understands medical workflows
 2. **Compliance built-in** - HIPAA/SOC 2 already resolved
@@ -194,7 +194,7 @@ Conducted comprehensive market research, competitive analysis, and medical use c
   - Imagery for engagement
   - Seamless UX
 
-**Recommendation for blaze.tech:**
+**Recommendation for HealthForge:**
 - **Hybrid approach** - wizard flow with "back" navigation capability
 - Step indicator (progress bar)
 - Escape hatch to "Advanced settings"
@@ -316,7 +316,7 @@ Format: ISO 8601
 - **Best for:** Basic date operations, minimal bundle size
 - **Approach:** Tree-shakeable imports
 
-**Recommendation for blaze.tech:**
+**Recommendation for HealthForge:**
 - **Primary:** Luxon (comprehensive, healthcare needs complex scheduling)
 - **Alternative:** date-fns-tz (if bundle size critical)
 - **Future:** Migrate to Temporal API when standard
@@ -491,7 +491,7 @@ Format: ISO 8601
 - Bubble: ❌ No wizard
 - OutSystems: ❌ Generic only, not calendar-specific
 
-**blaze.tech Advantage:**
+**HealthForge Advantage:**
 - Healthcare-first platform
 - Non-technical user base (perfect for wizard)
 - Calendar is core use case
@@ -579,7 +579,7 @@ Format: ISO 8601
 ### 7.1 Completed Research ✅
 
 - [x] Competitive analysis (Retool, Bubble, OutSystems)
-- [x] blaze.tech platform understanding
+- [x] HealthForge platform understanding
 - [x] Wizard UX best practices
 - [x] Timezone handling deep dive
 - [x] Medical use cases identification
@@ -612,10 +612,10 @@ Format: ISO 8601
 - [Bubble.io Full Calendar](https://manual.bubble.io/core-resources/bubble-made-plugins/full-calendar)
 - [OutSystems Calendar Widget](https://www.outsystems.com/forge/component-overview/21491/calendar-widget-o11)
 
-### blaze.tech Platform
-- [Blaze.tech Homepage](https://www.blaze.tech/)
-- [Medical App Development](https://www.blaze.tech/post/medical-app-development)
-- [Healthcare Solutions](https://www.blaze.tech/industries/healthcare)
+### HealthForge Platform
+- [Blaze.tech Homepage](#)
+- [Medical App Development](#)
+- [Healthcare Solutions](#)
 
 ### UX Best Practices
 - [Progressive Disclosure (NN/g)](https://www.nngroup.com/articles/progressive-disclosure/)

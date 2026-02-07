@@ -6,7 +6,7 @@
 
 ## 🎯 What You're Looking At
 
-This is a **complete product specification** for a Calendar Widget Configuration Wizard for blaze.tech (healthcare low-code platform).
+This is a **complete product specification** for a Calendar Widget Configuration Wizard for HealthForge (healthcare low-code platform).
 
 **The Task:** Design a solution to reduce calendar setup time from 45 minutes to <5 minutes while eliminating timezone errors.
 
@@ -70,7 +70,7 @@ Skim [docs/PAIN_POINTS_ANALYSIS.md](./docs/PAIN_POINTS_ANALYSIS.md) - sections:
 **Want to see implementation-ready specs?**
 
 ### Phase 1: Discovery (15 min)
-1. [docs/RESEARCH_REPORT.md](./docs/RESEARCH_REPORT.md) - Competitive analysis, blaze.tech platform, medical use cases
+1. [docs/RESEARCH_REPORT.md](./docs/RESEARCH_REPORT.md) - Competitive analysis, HealthForge platform, medical use cases
 2. [docs/PAIN_POINTS_ANALYSIS.md](./docs/PAIN_POINTS_ANALYSIS.md) - 15 validated user pain points
 
 ### Phase 2: Prioritization & Design (15 min)

@@ -1,6 +1,6 @@
 # Blaze Calendar Wizard - Executive Summary
 
-**Project:** Calendar Configuration Wizard for blaze.tech
+**Project:** Calendar Configuration Wizard for HealthForge
 **Candidate:** Artur (Product Manager Role)
 **Date:** 2026-02-07
 **Status:** ✅ Complete Discovery & Specification
@@ -9,7 +9,7 @@
 
 ## TL;DR (30-Second Version)
 
-**Problem:** Calendar widget in blaze.tech is difficult to configure - users spend 20-45 min, ~25-30% of calendars have timezone errors, 65% don't finish setup.
+**Problem:** Calendar widget in HealthForge is difficult to configure - users spend 20-45 min, ~25-30% of calendars have timezone errors, 65% don't finish setup.
 
 **Solution:** 5-step wizard with proactive timezone handling, medical templates, and preview/test - reduces setup to <5 min, timezone errors to <5%.
 
@@ -31,7 +31,7 @@
    - Competitive analysis: Retool, Bubble.io, OutSystems
    - **Finding:** ZERO competitors have calendar wizard
    - Best practices: Wizard UX, timezone handling, low-code trends
-   - blaze.tech platform analysis (healthcare focus, HIPAA compliance)
+   - HealthForge platform analysis (healthcare focus, HIPAA compliance)
 
 2. **Problem Prioritization (RICE Framework)**
    - Scored 5 problems for usability impact
@@ -124,7 +124,7 @@
 | Retool | ✅ | ❌ | Technical |
 | Bubble.io | ✅ | ❌ | Semi-technical |
 | OutSystems | ✅ | ❌ (Generic only) | Enterprise |
-| **blaze.tech** | ✅ | ✅ (Healthcare-specific) | Non-technical |
+| **HealthForge** | ✅ | ✅ (Healthcare-specific) | Non-technical |
 
 **Opportunity:** Be FIRST low-code platform with calendar-specific wizard + healthcare templates.
 
@@ -300,7 +300,7 @@ Evaluated 5 alternatives:
 ## NEXT STEPS (If Accepted)
 
 ### Immediate (Week 1)
-1. **Stakeholder review** - Present spec to blaze.tech leadership
+1. **Stakeholder review** - Present spec to HealthForge leadership
 2. **Design kickoff** - UI/UX team creates high-fidelity mockups
 3. **User testing** - Validate wizard flow with 5-8 healthcare users
 
@@ -337,7 +337,7 @@ Evaluated 5 alternatives:
 
 ---
 
-**Summary:** Comprehensive discovery + specification for Calendar Wizard feature - solves CRITICAL timezone problem (patient care), differentiates blaze.tech in healthcare market, implementable in 9-10 weeks. Ready for immediate handoff to design/dev teams.
+**Summary:** Comprehensive discovery + specification for Calendar Wizard feature - solves CRITICAL timezone problem (patient care), differentiates HealthForge in healthcare market, implementable in 9-10 weeks. Ready for immediate handoff to design/dev teams.
 
 ---
 

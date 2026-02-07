@@ -21,7 +21,7 @@
 **Acceptance Criteria:**
 
 ```gherkin
-GIVEN I am building an app in blaze.tech
+GIVEN I am building an app in HealthForge
 WHEN I drag the Calendar widget from Advanced section to canvas
 THEN wizard automatically opens in modal/side panel
 AND shows "Calendar Setup Wizard - Step 1 of 5"

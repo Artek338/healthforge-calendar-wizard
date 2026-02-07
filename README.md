@@ -1,7 +1,13 @@
-# Blaze Calendar Wizard - Product Management Case Study
+# Calendar Widget Configuration Wizard - Product Management Case Study
+
+![Documentation](https://img.shields.io/badge/docs-80%20pages-blue?style=for-the-badge)
+![RICE Score](https://img.shields.io/badge/Top%20Priority-RICE%202400-red?style=for-the-badge)
+![Setup Time](https://img.shields.io/badge/Setup%20Time--88%25-green?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/Problems%20Solved-73%25-brightgreen?style=for-the-badge)
+![Implementation](https://img.shields.io/badge/Story%20Points-52-orange?style=for-the-badge)
 
 > **Recruitment Task:** Complete Product Specification for Calendar Widget Configuration Wizard
-> **Company:** blaze.tech (Healthcare Low-Code Platform)
+> **Company:** HealthForge (Healthcare Low-Code Platform)
 > **Author:** Artur
 > **Date:** February 2026
 
@@ -23,7 +29,7 @@
 
 ### The Challenge
 
-blaze.tech users struggle to configure the Calendar widget - a critical component for healthcare scheduling applications. The current setup requires:
+HealthForge users struggle to configure the Calendar widget - a critical component for healthcare scheduling applications. The current setup requires:
 - **20-45 minutes** of manual configuration
 - Technical knowledge that non-technical users lack
 - No guidance on timezone handling (leading to **25-30% error rate**)
@@ -62,6 +68,30 @@ This project was completed using **Product Builder** - a custom PM workflow auto
 4. **Requirements Documentation** (PRD, user stories, acceptance criteria)
 5. **Validation** (Pain points mapping, edge cases, success metrics)
 
+### Product Development Flow
+
+```mermaid
+graph TB
+    A[📊 Discovery & Research] --> B[🎯 Problem Prioritization]
+    B --> C[💡 Solution Design]
+    C --> D[📋 Requirements Documentation]
+    D --> E[✅ Validation]
+
+    A --> A1[Market Research<br/>Competitive Analysis<br/>User Interviews]
+    B --> B1[RICE Framework<br/>5 Problems Scored<br/>Top: Timezone 2400]
+    C --> C1[5 Alternatives<br/>Wizard 9.1/10<br/>40-Page Flow Design]
+    D --> D1[PRD 12,000 words<br/>20 User Stories<br/>52 Story Points]
+    E --> E1[15 Pain Points<br/>73% Coverage<br/>14 KPIs Defined]
+
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#ffe1f5
+    style D fill:#e1ffe1
+    style E fill:#f5e1ff
+```
+
+**Outcome:** Implementation-ready product specification with measurable success criteria.
+
 ---
 
 ## 📚 Documentation Structure
@@ -95,7 +125,7 @@ blaze-calendar-wizard/
 - Bubble.io: ❌ No wizard (plugin marketplace)
 - OutSystems: ❌ Generic wizard only
 
-**Opportunity:** Differentiate blaze.tech with healthcare-specific calendar wizard.
+**Opportunity:** Differentiate HealthForge with healthcare-specific calendar wizard.
 
 ---
 
@@ -124,7 +154,7 @@ blaze-calendar-wizard/
 **Why This Works:**
 - Perfect for non-technical users (primary persona: Kasia - medical coordinator)
 - Addresses ALL prioritized problems (timezone, entry barrier, option overwhelm)
-- Competitive differentiation (unique to blaze.tech)
+- Competitive differentiation (unique to HealthForge)
 - Measurable success metrics
 
 ---
@@ -218,10 +248,8 @@ All research, user interviews, competitive analysis, and design thinking documen
 
 ## 🔗 Related Resources
 
-- **Product Builder Tool:** [github.com/Artek338/product-builder](https://github.com/Artek338/product-builder)
-- **Miro Board:** [Research Workspace](https://miro.com/welcomeonboard/cndleldYaHpFSU1XLzhRaUFFMTBqTW9lWWtsczJ4MjhzdkRGZXpaYnhuSEJMTTkzQWdaNG5sTjhkUGhzalZFVlBvWUUxWXg1TlEwQzFTWlJBaDlsZTROZ2grcHdHV1Y3eEJQZHRTRGtUbjJtd1FTNzdvZEdqcTN2Um9vTk1lU3R3VHhHVHd5UWtSM1BidUtUYmxycDRnPT0hdjE=?share_link_id=21971845474)
-- **blaze.tech Platform:** [blaze.tech](https://www.blaze.tech/)
-- **Healthcare Solutions:** [blaze.tech/industries/healthcare](https://www.blaze.tech/industries/healthcare)
+- **Product Builder Tool:** [github.com/Artek338/product-builder](https://github.com/Artek338/product-builder) - Custom PM workflow automation tool used for this project
+- **Miro Board:** [Research Workspace](https://miro.com/welcomeonboard/cndleldYaHpFSU1XLzhRaUFFMTBqTW9lWWtsczJ4MjhzdkRGZXpaYnhuSEJMTTkzQWdaNG5sTjhkUGhzalZFVlBvWUUxWXg1TlEwQzFTWlJBaDlsZTROZ2grcHdHV1Y3eEJQZHRTRGtUbjJtd1FTNzdvZEdqcTN2Um9vTk1lU3R3VHhHVHd5UWtSM1BidUtUYmxycDRnPT0hdjE=?share_link_id=21971845474) - Visual research and design workspace
 
 ---
 
@@ -255,7 +283,7 @@ WCAG 2.1 AA compliance built into requirements - keyboard navigation, screen rea
 
 ## 📄 License
 
-This is a recruitment case study. All documentation is original work created for blaze.tech hiring process.
+This is a recruitment case study. All documentation is original work created for HealthForge hiring process.
 
 ---
 

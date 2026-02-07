@@ -9,7 +9,7 @@
 
 ## EXECUTIVE SUMMARY
 
-Conducted RICE scoring for 5 main problems related to Calendar widget configuration in blaze.tech.
+Conducted RICE scoring for 5 main problems related to Calendar widget configuration in HealthForge.
 
 **Top Priority Problem: Timezone Errors (RICE: 2400)**
 - Highest business impact (patient care implications)
@@ -44,7 +44,7 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 ```
 
 ### Parameters
-- **Reach:** How many blaze.tech users will be affected (per quarter) - estimation
+- **Reach:** How many HealthForge users will be affected (per quarter) - estimation
 - **Impact:**
   - 0.25 = Minimal (slight improvement)
   - 0.5 = Low (noticeable, but not game-changing)
@@ -58,7 +58,7 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 - **Effort:** Person-months for implementation in wizard
 
 ### Assumptions
-- blaze.tech user base: ~1000 active users (assumption based on $500/mo pricing and healthcare market)
+- HealthForge user base: ~1000 active users (assumption based on $500/mo pricing and healthcare market)
 - Calendar widget usage: ~60% of users use calendar in their apps (scheduling is core use case)
 - Quarterly reach: ~600 users (assumption)
 
@@ -86,7 +86,7 @@ Users see dozens of configuration options in Calendar widget property panel with
 - Reasoning:
   - Validated through competitive analysis (Retool/Bubble have same complaints)
   - User research shows pattern (Kasia: "afraid of tech config")
-  - Not 100% because we don't have direct feedback from blaze.tech users
+  - Not 100% because we don't have direct feedback from HealthForge users
 
 **Effort: 1.0 person-month**
 - Reasoning:

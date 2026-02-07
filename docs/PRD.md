@@ -12,7 +12,7 @@
 ## 1. EXECUTIVE SUMMARY
 
 ### Problem
-The Calendar widget in blaze.tech is a popular component but suffers from high configuration complexity. Users face:
+The Calendar widget in HealthForge is a popular component but suffers from high configuration complexity. Users face:
 - 20-45 minutes average setup time for a working calendar
 - ~25-30% of deployed calendars have timezone errors that surface only in production
 - Analysis paralysis from dozens of configuration options without guidance
@@ -33,7 +33,7 @@ A 5-step configuration wizard that guides users through calendar setup in <5 min
 "Number of users with a working calendar (without timezone errors) within 7 days of adding the widget"
 
 ### Market Differentiation
-Competitive analysis shows NO major low-code platform (Retool, Bubble.io, OutSystems) has a dedicated calendar configuration wizard. This represents a significant opportunity for blaze.tech to differentiate, especially given the healthcare focus where timezone accuracy is critical for patient care.
+Competitive analysis shows NO major low-code platform (Retool, Bubble.io, OutSystems) has a dedicated calendar configuration wizard. This represents a significant opportunity for HealthForge to differentiate, especially given the healthcare focus where timezone accuracy is critical for patient care.
 
 ---
 
@@ -771,7 +771,7 @@ are displayed correctly in your preview (Step 5).
 
 **NFR-SEC-001:** HIPAA Compliance
 **Requirement:** Calendar configuration and data storage comply with HIPAA
-**Validation:** blaze.tech platform already HIPAA-compliant (inherited)
+**Validation:** HealthForge platform already HIPAA-compliant (inherited)
 
 **NFR-SEC-002:** Data Privacy
 **Requirement:** No PII/PHI in wizard configuration (only metadata)
@@ -1449,34 +1449,34 @@ describe('Timezone Accuracy', () => {
 
 ## 12. DEPENDENCIES & INTEGRATIONS
 
-### 12.1 Internal Dependencies (blaze.tech Platform)
+### 12.1 Internal Dependencies (HealthForge Platform)
 
 **DEP-INT-001: Calendar Widget Component**
-- **Dependency:** Existing Calendar widget in blaze.tech component library
+- **Dependency:** Existing Calendar widget in HealthForge component library
 - **Integration Point:** Wizard configures widget properties
 - **Risk:** Widget API changes could break wizard
 - **Mitigation:** Version compatibility checks, deprecation warnings
 
 **DEP-INT-002: Component Property Panel**
-- **Dependency:** blaze.tech property panel system (for "Advanced Settings" escape hatch)
+- **Dependency:** HealthForge property panel system (for "Advanced Settings" escape hatch)
 - **Integration Point:** Wizard opens property panel side-by-side
 - **Risk:** Property panel redesign could affect UX
 - **Mitigation:** Decouple wizard from property panel UI (API-based)
 
 **DEP-INT-003: User Authentication & Session Management**
-- **Dependency:** blaze.tech authentication system
+- **Dependency:** HealthForge authentication system
 - **Integration Point:** Wizard requires authenticated user session
 - **Risk:** Session timeout during wizard flow
 - **Mitigation:** Client-side draft saves, session extension on user activity
 
 **DEP-INT-004: Data Storage (Backend)**
-- **Dependency:** blaze.tech database (PostgreSQL)
+- **Dependency:** HealthForge database (PostgreSQL)
 - **Integration Point:** Wizard saves configuration to `calendar_widgets` table
 - **Risk:** Database schema changes
 - **Mitigation:** Use ORM migrations, backward-compatible schema changes
 
 **DEP-INT-005: Platform Analytics**
-- **Dependency:** blaze.tech analytics system (event tracking)
+- **Dependency:** HealthForge analytics system (event tracking)
 - **Integration Point:** Wizard emits events (step completions, errors, deployments)
 - **Risk:** Analytics API changes
 - **Mitigation:** Graceful degradation (analytics failure doesn't block wizard)
@@ -1531,7 +1531,7 @@ describe('Timezone Accuracy', () => {
 - Set up wizard component structure
 - Implement WizardShell (progress, navigation, state management)
 - Build Step 1: Use Case Selection
-- Integrate with blaze.tech component library
+- Integrate with HealthForge component library
 - **Deliverable:** Wizard shell + Step 1 functional
 
 **Phase 2: Timezone (Weeks 3-4) ⭐ CRITICAL**
@@ -1573,7 +1573,7 @@ describe('Timezone Accuracy', () => {
 - **Deliverable:** Beta-tested wizard
 
 **Phase 7: Production Launch (Week 9)**
-- Full rollout to all blaze.tech users
+- Full rollout to all HealthForge users
 - Monitoring & support readiness
 - Documentation (user guide, video tutorial)
 - **Deliverable:** Wizard live in production
@@ -1583,7 +1583,7 @@ describe('Timezone Accuracy', () => {
 **Phased Rollout Plan:**
 
 **Week 9: Internal Launch (0% → 5%)**
-- Enable wizard for internal blaze.tech team members
+- Enable wizard for internal HealthForge team members
 - Dogfood: Blaze team builds calendars using wizard
 - Monitor metrics: completion rate, errors, support requests
 - Fix critical bugs (hotfix if needed)
@@ -1943,7 +1943,7 @@ wizard_skip_rate{} = 0.18
 - Luxon Documentation: https://moment.github.io/luxon/
 - IANA Timezone Database: https://www.iana.org/time-zones
 - WCAG 2.1 Guidelines: https://www.w3.org/WAI/WCAG21/quickref/
-- blaze.tech Platform: https://www.blaze.tech/
+- HealthForge Platform: #
 
 ---
 

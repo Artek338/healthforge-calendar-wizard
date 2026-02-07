@@ -70,7 +70,7 @@
 Retool              ✅                ❌ None
 Bubble.io           ✅                ❌ None
 OutSystems          ✅                ⚠️  Generic only
-blaze.tech          ✅                ✅ Healthcare-specific
+HealthForge          ✅                ✅ Healthcare-specific
 ```
 
 **Market Gap:** No competitor has calendar-specific wizard

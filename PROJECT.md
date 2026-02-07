@@ -2,7 +2,7 @@
 
 ## 1. EXECUTIVE SUMMARY
 
-**What we're building:** Configuration wizard for Calendar widget in blaze.tech (low-code platform for healthcare industry)
+**What we're building:** Configuration wizard for Calendar widget in HealthForge (low-code platform for healthcare industry)
 
 **Problem:** Calendar widget is popular but difficult to configure - has many options, users get lost in configuration, especially with timezones (DST)
 
@@ -12,7 +12,7 @@
 - Proactively solves timezone problems
 - Delivers ready, working calendar in <5 min
 
-**Project Type:** blaze.tech recruitment task - product specification (not implementation)
+**Project Type:** HealthForge recruitment task - product specification (not implementation)
 
 **Deadline:** End of Sunday (February 7, 2026)
 
@@ -32,7 +32,7 @@
 
 ### Current Solutions
 
-- **blaze.tech currently:** Manual config, trial-and-error, documentation
+- **HealthForge currently:** Manual config, trial-and-error, documentation
 - **Retool:** Presets, but still manual timezone setup
 - **Bubble.io:** No wizard, fully manual
 - **OutSystems:** Wizards, but very technical
@@ -131,7 +131,7 @@ A wizard that **understands medical context** and **proactively prevents timezon
    - Competitive analysis (Retool, Bubble, OutSystems - how do they solve calendar setup?)
    - Best practices: wizard UX in no-code tools
    - Timezone handling standards in medical apps
-   - blaze.tech platform analysis
+   - HealthForge platform analysis
 
 2. **User Research** (Synthetic User agent)
    - Interview with Kasia & Tomek personas
@@ -177,7 +177,7 @@ A wizard that **understands medical context** and **proactively prevents timezon
 - How to test timezone correctness?
 - Libraries that "solve" the timezone problem?
 
-### blaze.tech Specifics
+### HealthForge Specifics
 - Current Calendar widget - capabilities/limitations?
 - Does blaze already have other wizards? How do they work?
 - Skill level of typical blaze user?
@@ -193,8 +193,8 @@ A wizard that **understands medical context** and **proactively prevents timezon
 
 - **Deadline:** End of Sunday - spec only, no code
 - **Scope:** Product spec (PRD + use cases + stories + alternatives)
-- **Platform:** Limited to blaze.tech capabilities (research needed)
-- **Audience:** blaze.tech recruiters (Product Manager role)
+- **Platform:** Limited to HealthForge capabilities (research needed)
+- **Audience:** HealthForge recruiters (Product Manager role)
 
 ---
 
