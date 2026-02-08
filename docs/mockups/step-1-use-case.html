@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 1: Use Case Selection - Calendar Configuration Wizard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles specific to Step 1 */
+    .use-case-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .use-case-card {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      position: relative;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .use-case-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .use-case-card:active {
+      transform: translateY(-2px);
+    }
+
+    /* Color accents for each card */
+    .use-case-card.appointments {
+      background: linear-gradient(135deg, #E1F5FF 0%, #ffffff 100%);
+    }
+
+    .use-case-card.resources {
+      background: linear-gradient(135deg, #E8F5E9 0%, #ffffff 100%);
+    }
+
+    .use-case-card.staff {
+      background: linear-gradient(135deg, #F3E5F5 0%, #ffffff 100%);
+    }
+
+    .use-case-card.events {
+      background: linear-gradient(135deg, #FFF9C4 0%, #ffffff 100%);
+    }
+
+    .use-case-card.custom {
+      background: linear-gradient(135deg, #F5F5F5 0%, #ffffff 100%);
+    }
+
+    .use-case-title {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: 4px;
+    }
+
+    .use-case-description {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-600);
+      line-height: var(--line-height-normal);
+      flex-grow: 1;
+    }
+
+    .skip-link {
+      text-align: center;
+      margin-top: var(--space-2);
+    }
+
+    .skip-link p {
+      margin-top: var(--space-1);
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-600);
+      line-height: var(--line-height-normal);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wizard-container">
+    <div class="wizard-card">
+      <!-- Progress Indicator -->
+      <div class="wizard-progress">
+        <div class="progress-steps">
+          <div class="progress-step active">
+            <div class="progress-step-circle">1</div>
+            <div class="progress-step-label">Use Case</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">2</div>
+            <div class="progress-step-label">Timezone</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">3</div>
+            <div class="progress-step-label">Configure</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">4</div>
+            <div class="progress-step-label">Display</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">5</div>
+            <div class="progress-step-label">Preview</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="wizard-content">
+        <div class="wizard-header">
+          <h1 class="wizard-title">What will you use this calendar for?</h1>
+          <p class="wizard-subtitle">Choose a template to get started quickly</p>
+        </div>
+
+        <!-- Use Case Cards -->
+        <div class="use-case-cards">
+          <!-- Card 1: Patient Appointments -->
+          <div class="use-case-card appointments" tabindex="0" role="button" aria-label="Select Patient Appointments template">
+            <h2 class="use-case-title">Patient Appointments</h2>
+            <p class="use-case-description">Schedule patient visits, consultations, and follow-up appointments</p>
+          </div>
+
+          <!-- Card 2: Resource Booking -->
+          <div class="use-case-card resources" tabindex="0" role="button" aria-label="Select Resource & Equipment Booking template">
+            <h2 class="use-case-title">Resource & Equipment Booking</h2>
+            <p class="use-case-description">Book operating rooms, MRI machines, CT scanners, and treatment bays</p>
+          </div>
+
+          <!-- Card 3: Staff Scheduling -->
+          <div class="use-case-card staff" tabindex="0" role="button" aria-label="Select Staff Scheduling template">
+            <h2 class="use-case-title">Staff Scheduling</h2>
+            <p class="use-case-description">Manage doctor and nurse shifts, on-call rotations, and coverage</p>
+          </div>
+
+          <!-- Card 4: Events & Meetings -->
+          <div class="use-case-card events" tabindex="0" role="button" aria-label="Select Events & Meetings template">
+            <h2 class="use-case-title">Events & Meetings</h2>
+            <p class="use-case-description">Schedule team meetings, training sessions, and department events</p>
+          </div>
+
+          <!-- Card 5: Custom -->
+          <div class="use-case-card custom" tabindex="0" role="button" aria-label="Select Custom configuration">
+            <h2 class="use-case-title">Other / Custom</h2>
+            <p class="use-case-description">Start with a blank calendar and configure it yourself</p>
+          </div>
+        </div>
+
+        <!-- Skip Link -->
+        <div class="skip-link">
+          <button class="button-link">Skip wizard - Configure manually →</button>
+          <p>
+            <strong>Best Practice:</strong> Complete the wizard first to establish a solid foundation, then fine-tune with manual configuration if needed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="wizard-footer">
+        <div>
+          <button class="button button-secondary" disabled>← Back</button>
+        </div>
+        <div style="text-align: right;">
+          <button class="button button-primary" disabled>Next →</button>
+          <p style="font-size: 11px; color: var(--color-gray-500); margin-top: 4px;">
+            Select a template to continue
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple interaction to show selection (mockup only)
+    const cards = document.querySelectorAll('.use-case-card');
+    const nextButton = document.querySelector('.button-primary');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Remove selection from all cards
+        cards.forEach(c => {
+          c.style.borderColor = 'var(--color-gray-200)';
+          c.style.boxShadow = 'none';
+        });
+
+        // Highlight selected card
+        card.style.borderColor = 'var(--color-primary)';
+        card.style.boxShadow = 'var(--shadow-lg)';
+
+        // Enable next button
+        nextButton.disabled = false;
+      });
+
+      // Keyboard accessibility
+      card.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          card.click();
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

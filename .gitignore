@@ -1,0 +1,33 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup Files
+*.bak
+*.tmp
+*~
+
+# Local Configuration
+.env
+.env.local
+
+# Build Output
+dist/
+build/
+out/
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.cache

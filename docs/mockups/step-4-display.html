@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 4: Display & Permissions - Calendar Configuration Wizard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles specific to Step 4 */
+    .wizard-card.two-column {
+      max-width: 950px;
+    }
+
+    .display-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+
+    .settings-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .form-section {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+    }
+
+    .form-section-title {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-2);
+    }
+
+    /* Segmented Control */
+    .segmented-control {
+      display: inline-flex;
+      background: var(--color-gray-100);
+      border-radius: var(--radius-md);
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .segment-option {
+      padding: 8px 20px;
+      border: none;
+      background: transparent;
+      color: var(--color-gray-700);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-sm);
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-base);
+      position: relative;
+      user-select: none;
+    }
+
+    .segment-option:hover {
+      color: var(--color-gray-900);
+    }
+
+    .segment-option.active {
+      background: white;
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* Checkbox Group */
+    .checkbox-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      padding: 6px var(--space-2);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+
+    .checkbox-item:hover {
+      background: var(--color-gray-50);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: var(--space-2);
+      cursor: pointer;
+      accent-color: var(--color-primary);
+    }
+
+    .checkbox-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-900);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Toggle Switches */
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .toggle-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-1) 0;
+    }
+
+    .toggle-label-wrapper {
+      flex-grow: 1;
+    }
+
+    .toggle-label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-gray-900);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .toggle-description {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-600);
+      line-height: 1.3;
+    }
+
+    /* Toggle Switch Component */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-gray-300);
+      transition: var(--transition-base);
+      border-radius: 34px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: var(--transition-base);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    input:checked + .toggle-slider {
+      background-color: var(--color-success);
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    .toggle-slider:hover {
+      opacity: 0.9;
+    }
+
+    /* Preview Panel */
+    .preview-panel {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+      position: sticky;
+      top: 20px;
+    }
+
+    .preview-title {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: 4px;
+    }
+
+    .preview-subtitle {
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-600);
+      margin-bottom: var(--space-2);
+    }
+
+    /* Mini Calendar Preview */
+    .mini-calendar {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .mini-calendar-header {
+      text-align: center;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-1);
+      font-size: var(--font-size-sm);
+    }
+
+    .mini-calendar-grid {
+      display: grid;
+      grid-template-columns: 50px repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-gray-300);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .mini-calendar-header-cell {
+      background: white;
+      padding: 6px 3px;
+      text-align: center;
+      font-weight: var(--font-weight-semibold);
+      font-size: 10px;
+      color: var(--color-gray-700);
+    }
+
+    .mini-calendar-time {
+      background: white;
+      padding: 6px 3px;
+      font-size: 9px;
+      color: var(--color-gray-600);
+      text-align: right;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .mini-calendar-slot {
+      background: white;
+      padding: 3px;
+      min-height: 42px;
+      position: relative;
+      font-size: 9px;
+    }
+
+    .mini-appointment {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #1976D2 100%);
+      color: white;
+      padding: 3px;
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: var(--font-weight-semibold);
+      text-align: center;
+      line-height: 1.3;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .appointment-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .appointment-time {
+      font-size: 8px;
+      opacity: 0.9;
+    }
+
+    .appointment-name {
+      font-size: 9px;
+    }
+
+    .appointment-status {
+      font-size: 7px;
+      opacity: 0.8;
+    }
+
+    .preview-caption {
+      text-align: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-gray-600);
+      margin-top: var(--space-1);
+      font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+      .display-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-panel {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wizard-container">
+    <div class="wizard-card two-column">
+      <!-- Progress Indicator -->
+      <div class="wizard-progress">
+        <div class="progress-steps">
+          <div class="progress-step completed">
+            <div class="progress-step-circle">✓</div>
+            <div class="progress-step-label">Use Case</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step completed">
+            <div class="progress-step-circle">✓</div>
+            <div class="progress-step-label">Timezone</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step completed">
+            <div class="progress-step-circle">✓</div>
+            <div class="progress-step-label">Configure</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step active">
+            <div class="progress-step-circle">4</div>
+            <div class="progress-step-label">Display</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">5</div>
+            <div class="progress-step-label">Preview</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="wizard-content">
+        <div class="wizard-header">
+          <h1 class="wizard-title">Display & Permissions</h1>
+          <p class="wizard-subtitle">Customize how your calendar appears and what users can do</p>
+        </div>
+
+        <div class="display-layout">
+          <!-- Left Panel: Settings -->
+          <div class="settings-panel">
+            <!-- Section 1: Default View -->
+            <div class="form-section">
+              <h2 class="form-section-title">Default Calendar View</h2>
+              <div class="segmented-control" role="tablist" aria-label="Calendar view selection">
+                <button class="segment-option" role="tab" aria-selected="false" data-view="month">
+                  Month
+                </button>
+                <button class="segment-option active" role="tab" aria-selected="true" data-view="week">
+                  Week
+                </button>
+                <button class="segment-option" role="tab" aria-selected="false" data-view="day">
+                  Day
+                </button>
+              </div>
+            </div>
+
+            <!-- Section 2: Information to Display -->
+            <div class="form-section">
+              <h2 class="form-section-title">Information to Display</h2>
+              <p style="font-size: var(--font-size-xs); color: var(--color-gray-600); margin-bottom: var(--space-2);">
+                Select what information should appear on calendar appointments
+              </p>
+              <div class="checkbox-list">
+                <label class="checkbox-item">
+                  <input type="checkbox" id="show-time" checked>
+                  <span class="checkbox-label">Time</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" id="show-name" checked>
+                  <span class="checkbox-label">Patient Name</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" id="show-location">
+                  <span class="checkbox-label">Location</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" id="show-status" checked>
+                  <span class="checkbox-label">Status</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" id="show-notes">
+                  <span class="checkbox-label">Notes</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Section 3: User Permissions -->
+            <div class="form-section">
+              <h2 class="form-section-title">User Permissions</h2>
+              <p style="font-size: var(--font-size-xs); color: var(--color-gray-600); margin-bottom: var(--space-2);">
+                Control what users can do with appointments
+              </p>
+              <div class="toggle-list">
+                <div class="toggle-item">
+                  <div class="toggle-label-wrapper">
+                    <span class="toggle-label">Allow creating new appointments</span>
+                    <span class="toggle-description">Users can add new appointments to the calendar</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="perm-create" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="toggle-item">
+                  <div class="toggle-label-wrapper">
+                    <span class="toggle-label">Allow editing appointments</span>
+                    <span class="toggle-description">Users can modify existing appointments</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="perm-edit" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="toggle-item">
+                  <div class="toggle-label-wrapper">
+                    <span class="toggle-label">Allow deleting appointments</span>
+                    <span class="toggle-description">Users can remove appointments from the calendar</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="perm-delete">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Panel: Live Preview -->
+          <div class="preview-panel">
+            <h2 class="preview-title">Live Preview</h2>
+            <p class="preview-subtitle">Updates as you change settings</p>
+
+            <div class="alert-box alert-info" style="margin-bottom: var(--space-2); padding: var(--space-2);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div class="alert-box-icon" style="font-size: 14px;">👁️</div>
+                <div style="font-size: var(--font-size-xs);">
+                  <strong>Current view:</strong> <span id="preview-view-name">Week View</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-calendar">
+              <div class="mini-calendar-header" id="calendar-header">Week View - February 2026</div>
+
+              <div class="mini-calendar-grid">
+                <!-- Header Row -->
+                <div class="mini-calendar-header-cell">Time</div>
+                <div class="mini-calendar-header-cell">MON 10</div>
+                <div class="mini-calendar-header-cell">WED 12</div>
+                <div class="mini-calendar-header-cell">FRI 14</div>
+
+                <!-- 9:00 AM Row -->
+                <div class="mini-calendar-time">9:00</div>
+                <div class="mini-calendar-slot">
+                  <div class="mini-appointment" id="appt-1">
+                    <div class="appointment-info">
+                      <span class="appointment-time" data-field="time">9:00 AM</span>
+                      <span class="appointment-name" data-field="name">John Doe</span>
+                      <span class="appointment-status" data-field="status">Confirmed</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mini-calendar-slot"></div>
+                <div class="mini-calendar-slot"></div>
+
+                <!-- 10:00 AM Row -->
+                <div class="mini-calendar-time">10:00</div>
+                <div class="mini-calendar-slot"></div>
+                <div class="mini-calendar-slot">
+                  <div class="mini-appointment" id="appt-2">
+                    <div class="appointment-info">
+                      <span class="appointment-time" data-field="time">10:30 AM</span>
+                      <span class="appointment-name" data-field="name">Jane Smith</span>
+                      <span class="appointment-status" data-field="status">Pending</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mini-calendar-slot"></div>
+
+                <!-- 11:00 AM Row -->
+                <div class="mini-calendar-time">11:00</div>
+                <div class="mini-calendar-slot"></div>
+                <div class="mini-calendar-slot"></div>
+                <div class="mini-calendar-slot">
+                  <div class="mini-appointment" id="appt-3">
+                    <div class="appointment-info">
+                      <span class="appointment-time" data-field="time">11:00 AM</span>
+                      <span class="appointment-name" data-field="name">Alex Wilson</span>
+                      <span class="appointment-status" data-field="status">Confirmed</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2:00 PM Row -->
+                <div class="mini-calendar-time">2:00</div>
+                <div class="mini-calendar-slot"></div>
+                <div class="mini-calendar-slot">
+                  <div class="mini-appointment" id="appt-4">
+                    <div class="appointment-info">
+                      <span class="appointment-time" data-field="time">2:00 PM</span>
+                      <span class="appointment-name" data-field="name">Maria Garcia</span>
+                      <span class="appointment-status" data-field="status">Confirmed</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mini-calendar-slot"></div>
+              </div>
+
+              <p class="preview-caption">
+                Preview updates in real-time based on your selections
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skip Link -->
+        <div class="skip-link">
+          <button class="button-link">Skip wizard - Configure manually →</button>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="wizard-footer">
+        <div>
+          <button class="button button-secondary">← Back</button>
+        </div>
+        <div>
+          <button class="button button-primary">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Interactive functionality for the mockup
+
+    // Segmented Control
+    const segments = document.querySelectorAll('.segment-option');
+    const previewViewName = document.getElementById('preview-view-name');
+    const calendarHeader = document.getElementById('calendar-header');
+
+    segments.forEach(segment => {
+      segment.addEventListener('click', function() {
+        segments.forEach(s => {
+          s.classList.remove('active');
+          s.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
+
+        const view = this.getAttribute('data-view');
+        const viewNames = {
+          'month': 'Month View',
+          'week': 'Week View',
+          'day': 'Day View'
+        };
+
+        previewViewName.textContent = viewNames[view];
+        calendarHeader.textContent = `${viewNames[view]} - February 2026`;
+      });
+    });
+
+    // Checkbox functionality - show/hide appointment fields
+    const showTimeCheckbox = document.getElementById('show-time');
+    const showNameCheckbox = document.getElementById('show-name');
+    const showStatusCheckbox = document.getElementById('show-status');
+
+    function updateAppointmentDisplay() {
+      const timeFields = document.querySelectorAll('[data-field="time"]');
+      const nameFields = document.querySelectorAll('[data-field="name"]');
+      const statusFields = document.querySelectorAll('[data-field="status"]');
+
+      timeFields.forEach(field => {
+        field.style.display = showTimeCheckbox.checked ? 'block' : 'none';
+      });
+
+      nameFields.forEach(field => {
+        field.style.display = showNameCheckbox.checked ? 'block' : 'none';
+      });
+
+      statusFields.forEach(field => {
+        field.style.display = showStatusCheckbox.checked ? 'block' : 'none';
+      });
+    }
+
+    showTimeCheckbox.addEventListener('change', updateAppointmentDisplay);
+    showNameCheckbox.addEventListener('change', updateAppointmentDisplay);
+    showStatusCheckbox.addEventListener('change', updateAppointmentDisplay);
+
+    // Initialize display
+    updateAppointmentDisplay();
+
+    // Toggle switches - visual feedback
+    const toggles = document.querySelectorAll('.toggle-switch input');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('change', function() {
+        console.log(`${this.id} is now ${this.checked ? 'enabled' : 'disabled'}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Configuration Wizard - Interactive Mockups</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Landing page specific styles */
+    .landing-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: var(--space-8);
+      padding: var(--space-6) var(--space-4);
+      background: linear-gradient(135deg, var(--color-primary-light) 0%, white 100%);
+      border-radius: var(--radius-xl);
+    }
+
+    .hero-title {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-xl);
+      color: var(--color-gray-600);
+      margin-bottom: var(--space-1);
+    }
+
+    .hero-description {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-600);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: var(--line-height-relaxed);
+    }
+
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .info-card {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      text-align: center;
+    }
+
+    .info-card-icon {
+      font-size: 48px;
+      margin-bottom: var(--space-2);
+    }
+
+    .info-card-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-1);
+    }
+
+    .info-card-text {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-600);
+    }
+
+    .mockups-section {
+      margin-bottom: var(--space-8);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .section-title {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .section-subtitle {
+      font-size: var(--font-size-lg);
+      color: var(--color-gray-600);
+    }
+
+    .mockup-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .mockup-card {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+
+    .mockup-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+    }
+
+    .mockup-preview {
+      background: var(--color-gray-100);
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid var(--color-gray-200);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mockup-preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .mockup-preview-icon {
+      font-size: 120px;
+      opacity: 0.3;
+    }
+
+    .mockup-badge {
+      position: absolute;
+      top: var(--space-2);
+      right: var(--space-2);
+      background: var(--color-error);
+      color: white;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .mockup-badge.recommended {
+      background: var(--color-success);
+    }
+
+    .mockup-content {
+      padding: var(--space-4);
+    }
+
+    .mockup-step {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .mockup-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .mockup-description {
+      font-size: var(--font-size-base);
+      color: var(--color-gray-600);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-3);
+    }
+
+    .mockup-features {
+      list-style: none;
+      margin-bottom: var(--space-3);
+    }
+
+    .mockup-features li {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-700);
+      padding: var(--space-1) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .mockup-features li:before {
+      content: "✓";
+      color: var(--color-success);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .mockup-link {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 24px;
+      background: var(--color-primary);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-weight: var(--font-weight-semibold);
+      transition: all var(--transition-base);
+    }
+
+    .mockup-link:hover {
+      background: var(--color-primary-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    .features-section {
+      background: var(--color-gray-50);
+      padding: var(--space-6);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-6);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .feature-item {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+
+    .feature-content h3 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-1);
+      color: var(--color-gray-900);
+    }
+
+    .feature-content p {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-600);
+      line-height: var(--line-height-relaxed);
+    }
+
+    .footer {
+      text-align: center;
+      padding: var(--space-6) 0;
+      border-top: 2px solid var(--color-gray-200);
+      margin-top: var(--space-8);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+    }
+
+    .footer-link {
+      color: var(--color-gray-600);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+    }
+
+    .footer-link:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body style="background: var(--color-gray-50);">
+  <div class="landing-container">
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1 class="hero-title">Calendar Configuration Wizard</h1>
+      <p class="hero-subtitle">Interactive HTML/CSS Mockups</p>
+      <p class="hero-description">
+        Professional, production-ready mockups demonstrating a guided wizard flow for configuring
+        healthcare calendar widgets. Built with modern UX/UI standards, accessibility best practices,
+        and medical software aesthetic.
+      </p>
+    </div>
+
+    <!-- Project Info Cards -->
+    <div class="project-info">
+      <div class="info-card">
+        <div class="info-card-icon">🎯</div>
+        <div class="info-card-title">5-Step Wizard Flow</div>
+        <div class="info-card-text">Guides users from use case selection to deployment</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🌍</div>
+        <div class="info-card-title">Timezone Complexity</div>
+        <div class="info-card-text">Proactive DST warnings and cross-timezone handling</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">♿</div>
+        <div class="info-card-title">WCAG AA Compliant</div>
+        <div class="info-card-text">Accessible design with keyboard navigation support</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">💊</div>
+        <div class="info-card-title">Healthcare UI</div>
+        <div class="info-card-text">Professional medical software aesthetic</div>
+      </div>
+    </div>
+
+    <!-- Mockups Section -->
+    <div class="mockups-section">
+      <div class="section-header">
+        <h2 class="section-title">Interactive Mockups</h2>
+        <p class="section-subtitle">Click on any mockup to explore the interactive experience</p>
+      </div>
+
+      <div class="mockup-cards">
+        <!-- Step 1: Use Case Selection -->
+        <div class="mockup-card" onclick="window.location.href='step-1-use-case.html'">
+          <div class="mockup-preview">
+            <div class="mockup-preview-icon">📅</div>
+            <span class="mockup-badge recommended">Recommended Start</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-step">STEP 1 OF 5</div>
+            <h3 class="mockup-title">Use Case Selection</h3>
+            <p class="mockup-description">
+              Choose from 5 pre-configured templates tailored for healthcare scenarios
+            </p>
+            <ul class="mockup-features">
+              <li>Patient Appointments (recommended)</li>
+              <li>Resource & Equipment Booking</li>
+              <li>Staff Scheduling</li>
+              <li>Events & Meetings</li>
+              <li>Custom Configuration</li>
+            </ul>
+            <a href="step-1-use-case.html" class="mockup-link">View Mockup →</a>
+          </div>
+        </div>
+
+        <!-- Step 2: Timezone Setup -->
+        <div class="mockup-card" onclick="window.location.href='step-2-timezone.html'">
+          <div class="mockup-preview">
+            <div class="mockup-preview-icon">🌍</div>
+            <span class="mockup-badge">CRITICAL</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-step">STEP 2 OF 5</div>
+            <h3 class="mockup-title">Timezone Setup</h3>
+            <p class="mockup-description">
+              Proactive timezone configuration with Australia DST complexity warnings
+            </p>
+            <ul class="mockup-features">
+              <li>Auto-detect user timezone</li>
+              <li>Cross-timezone support</li>
+              <li>Australia DST warning (5 timezones)</li>
+              <li>UTC storage explanation</li>
+            </ul>
+            <a href="step-2-timezone.html" class="mockup-link">View Mockup →</a>
+          </div>
+        </div>
+
+        <!-- Step 3: Date/Time Configuration -->
+        <div class="mockup-card" onclick="window.location.href='step-3-date-time.html'">
+          <div class="mockup-preview">
+            <div class="mockup-preview-icon">⏰</div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-step">STEP 3 OF 5</div>
+            <h3 class="mockup-title">Date/Time Configuration</h3>
+            <p class="mockup-description">
+              Configure appointment slots, working hours, and booking window
+            </p>
+            <ul class="mockup-features">
+              <li>Slot duration (15/30/60 min + custom)</li>
+              <li>Working hours & weekday selection</li>
+              <li>Booking window (90 days ahead)</li>
+              <li>Buffer time between appointments</li>
+            </ul>
+            <a href="step-3-date-time.html" class="mockup-link">View Mockup →</a>
+          </div>
+        </div>
+
+        <!-- Step 4: Display Preferences -->
+        <div class="mockup-card" onclick="window.location.href='step-4-display.html'">
+          <div class="mockup-preview">
+            <div class="mockup-preview-icon">🎨</div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-step">STEP 4 OF 5</div>
+            <h3 class="mockup-title">Display Preferences</h3>
+            <p class="mockup-description">
+              Customize calendar view and visible fields with live preview
+            </p>
+            <ul class="mockup-features">
+              <li>Calendar view (Month/Week/Day)</li>
+              <li>Display fields selection</li>
+              <li>Permissions & privacy settings</li>
+              <li>Real-time preview panel</li>
+            </ul>
+            <a href="step-4-display.html" class="mockup-link">View Mockup →</a>
+          </div>
+        </div>
+
+        <!-- Step 5: Preview & Test -->
+        <div class="mockup-card" onclick="window.location.href='step-5-preview.html'">
+          <div class="mockup-preview">
+            <div class="mockup-preview-icon">✅</div>
+            <span class="mockup-badge recommended">Final Step</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-step">STEP 5 OF 5</div>
+            <h3 class="mockup-title">Preview & Test</h3>
+            <p class="mockup-description">
+              Live calendar preview with validation checklist and sample booking test
+            </p>
+            <ul class="mockup-features">
+              <li>Configuration summary checklist</li>
+              <li>Interactive calendar preview</li>
+              <li>Test booking functionality</li>
+              <li>Deployment options</li>
+            </ul>
+            <a href="step-5-preview.html" class="mockup-link">View Mockup →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Configuration Section -->
+    <div class="alert-box alert-warning" style="margin-bottom: var(--space-6);">
+      <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+        <div class="alert-box-icon">⚙️</div>
+        <div>
+          <div class="alert-box-title">Need Advanced Configuration?</div>
+          <p style="margin-top: var(--space-2); line-height: var(--line-height-relaxed);">
+            The wizard provides guided setup for common healthcare scenarios. For advanced users who need
+            full control, an <strong>"Escape to Manual Configuration"</strong> option is available at any step.
+          </p>
+          <div style="margin-top: var(--space-3);">
+            <p style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-2);">
+              Manual configuration includes:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-2); font-size: var(--font-size-sm);">
+              <div>
+                <strong>Content Options:</strong>
+                <ul style="margin-left: var(--space-4); margin-top: var(--space-1);">
+                  <li>Dynamic/Static data sources</li>
+                  <li>Custom workflow & API integrations</li>
+                  <li>Calendar column sizing (Fit/Count/Fixed)</li>
+                  <li>View modes (Day/Week/Month)</li>
+                  <li>Time format (12H/24H) & scale (1H/30MIN)</li>
+                  <li>Working hours configuration</li>
+                  <li>Actions (Add/Edit/Delete/View)</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Style Customization:</strong>
+                <ul style="margin-left: var(--space-4); margin-top: var(--space-1);">
+                  <li>Padding & spacing controls</li>
+                  <li>Color roles (fills, outlines, accents)</li>
+                  <li>Date selector states (default/hover/selected)</li>
+                  <li>Appointment containers & labels</li>
+                  <li>Grid lines & backgrounds</li>
+                  <li>Font families, weights, sizes</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Responsive Design:</strong>
+                <ul style="margin-left: var(--space-4); margin-top: var(--space-1);">
+                  <li>Desktop/Tablet/Mobile visibility</li>
+                  <li>Width & height sizing options</li>
+                  <li>Conditional visibility rules</li>
+                  <li>Custom themes (Clarity/Meridian/Pulse/Tonal)</li>
+                  <li>Tag & chart color palettes</li>
+                  <li>Border effects & corner radius</li>
+                </ul>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-3); font-size: var(--font-size-sm); color: var(--color-gray-600);">
+              <strong>💡 Best Practice:</strong> Complete the wizard first to establish a solid foundation,
+              then fine-tune with manual configuration if needed. The wizard prevents common timezone and
+              configuration errors that are easy to make in manual mode.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+      <div class="section-header">
+        <h2 class="section-title">Design System Features</h2>
+        <p class="section-subtitle">Modern UX/UI standards implemented throughout</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-content">
+            <h3>Design Tokens</h3>
+            <p>CSS variables for colors, spacing (8px grid), typography, and consistent design system</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-content">
+            <h3>Responsive Design</h3>
+            <p>Desktop-first (1200px+) with mobile breakpoints and flexible layouts</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">⌨️</div>
+          <div class="feature-content">
+            <h3>Keyboard Navigation</h3>
+            <p>Full keyboard support with focus states and ARIA labels for screen readers</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-content">
+            <h3>Semantic HTML</h3>
+            <p>Proper heading hierarchy, form labels, and accessible color contrast (WCAG AA)</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">✨</div>
+          <div class="feature-content">
+            <h3>Smooth Interactions</h3>
+            <p>Hover effects, transitions, and visual feedback for better user experience</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">🏥</div>
+          <div class="feature-content">
+            <h3>Healthcare Aesthetic</h3>
+            <p>Professional medical software feel with trust, clarity, and approachability</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Details -->
+    <div class="alert-box alert-info">
+      <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+        <div class="alert-box-icon">💡</div>
+        <div>
+          <div class="alert-box-title">Technical Implementation</div>
+          <p style="margin-top: var(--space-1); line-height: var(--line-height-relaxed);">
+            <strong>Technology Stack:</strong> Pure HTML5/CSS3 with minimal JavaScript for interactions.
+            Shared stylesheet (styles.css) provides consistent design system. Semantic markup ensures
+            accessibility. No frameworks required - production-ready code that can be integrated
+            directly into HealthForge platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p style="color: var(--color-gray-600); font-size: var(--font-size-base);">
+        <strong>HealthForge Calendar Wizard</strong> - Interactive Mockups
+      </p>
+      <p style="color: var(--color-gray-500); font-size: var(--font-size-sm); margin-top: var(--space-1);">
+        Created for recruitment demonstration | February 2026
+      </p>
+      <div class="footer-links">
+        <a href="../WIZARD_FLOW.md" class="footer-link">📄 Wizard Flow Spec</a>
+        <a href="../PRD.md" class="footer-link">📋 Product Requirements</a>
+        <a href="../USER_STORIES.md" class="footer-link">📖 User Stories</a>
+        <a href="../../METHODOLOGY.md" class="footer-link">🔬 Methodology</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add hover effect to mockup cards
+    document.querySelectorAll('.mockup-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-4px)';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 3: Date & Time Configuration - Calendar Configuration Wizard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles specific to Step 3 */
+    .form-section {
+      background: white;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .form-section-title {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .inline-radio-group {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .inline-radio-option {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background: white;
+      position: relative;
+      font-size: var(--font-size-sm);
+    }
+
+    .inline-radio-option:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .inline-radio-option input[type="radio"] {
+      margin-right: 6px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .inline-radio-option.selected {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .recommended-badge {
+      display: inline-block;
+      background: var(--color-success);
+      color: white;
+      padding: 2px 6px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: var(--font-weight-semibold);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* Day Pills */
+    .day-pills {
+      display: flex;
+      gap: 6px;
+      margin-top: var(--space-2);
+    }
+
+    .day-pill {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--color-gray-300);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--font-size-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background: white;
+      color: var(--color-gray-600);
+      user-select: none;
+    }
+
+    .day-pill:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .day-pill.selected {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
+    }
+
+    /* Time Pickers */
+    .time-range {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .time-select {
+      padding: 8px 12px;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      cursor: pointer;
+      background: white;
+      min-width: 120px;
+      transition: all var(--transition-base);
+    }
+
+    .time-select:hover {
+      border-color: var(--color-primary);
+    }
+
+    .time-select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+
+    .time-separator {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-gray-600);
+      font-size: var(--font-size-sm);
+    }
+
+    /* Custom Input */
+    .custom-input-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--font-size-sm);
+    }
+
+    .custom-input {
+      width: 60px;
+      padding: 6px 8px;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      transition: all var(--transition-base);
+    }
+
+    .custom-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+
+    .custom-input:disabled {
+      background: var(--color-gray-100);
+      cursor: not-allowed;
+    }
+
+    /* Dropdown Select */
+    .select-wrapper {
+      margin-top: var(--space-2);
+    }
+
+    .select-dropdown {
+      width: 100%;
+      max-width: 280px;
+      padding: 8px 12px;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      cursor: pointer;
+      background: white;
+      transition: all var(--transition-base);
+    }
+
+    .select-dropdown:hover {
+      border-color: var(--color-primary);
+    }
+
+    .select-dropdown:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+
+    .sublabel {
+      font-size: var(--font-size-sm);
+      color: var(--color-gray-600);
+      margin-top: 2px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wizard-container">
+    <div class="wizard-card">
+      <!-- Progress Indicator -->
+      <div class="wizard-progress">
+        <div class="progress-steps">
+          <div class="progress-step completed">
+            <div class="progress-step-circle">✓</div>
+            <div class="progress-step-label">Use Case</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step completed">
+            <div class="progress-step-circle">✓</div>
+            <div class="progress-step-label">Timezone</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step active">
+            <div class="progress-step-circle">3</div>
+            <div class="progress-step-label">Configure</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">4</div>
+            <div class="progress-step-label">Display</div>
+            <div class="progress-step-connector"></div>
+          </div>
+          <div class="progress-step">
+            <div class="progress-step-circle">5</div>
+            <div class="progress-step-label">Preview</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="wizard-content">
+        <div class="wizard-header">
+          <h1 class="wizard-title">Date & Time Configuration</h1>
+          <p class="wizard-subtitle">Set your default availability and appointment rules</p>
+        </div>
+
+        <!-- Section 1: Slot Duration -->
+        <div class="form-section">
+          <h2 class="form-section-title">Appointment Duration (Slot Size)</h2>
+          <div class="inline-radio-group">
+            <label class="inline-radio-option">
+              <input type="radio" name="slot-duration" value="15">
+              <span>15 minutes</span>
+            </label>
+            <label class="inline-radio-option selected" id="slot-30">
+              <input type="radio" name="slot-duration" value="30" checked>
+              <span>30 minutes</span>
+              <span class="recommended-badge">Recommended</span>
+            </label>
+            <label class="inline-radio-option">
+              <input type="radio" name="slot-duration" value="60">
+              <span>60 minutes</span>
+            </label>
+            <label class="inline-radio-option" id="custom-option">
+              <input type="radio" name="slot-duration" value="custom" id="custom-radio">
+              <span class="custom-input-wrapper">
+                Custom: <input type="number" class="custom-input" id="custom-input" value="45" min="5" max="480" disabled> minutes
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 2: Availability -->
+        <div class="form-section">
+          <h2 class="form-section-title">Availability</h2>
+
+          <div class="form-group">
+            <label class="form-label">Days</label>
+            <span class="sublabel">Select which days appointments can be booked</span>
+            <div class="day-pills">
+              <div class="day-pill selected" data-day="mon" tabindex="0" role="button" aria-label="Monday" aria-pressed="true">M</div>
+              <div class="day-pill selected" data-day="tue" tabindex="0" role="button" aria-label="Tuesday" aria-pressed="true">T</div>
+              <div class="day-pill selected" data-day="wed" tabindex="0" role="button" aria-label="Wednesday" aria-pressed="true">W</div>
+              <div class="day-pill selected" data-day="thu" tabindex="0" role="button" aria-label="Thursday" aria-pressed="true">T</div>
+              <div class="day-pill selected" data-day="fri" tabindex="0" role="button" aria-label="Friday" aria-pressed="true">F</div>
+              <div class="day-pill" data-day="sat" tabindex="0" role="button" aria-label="Saturday" aria-pressed="false">S</div>
+              <div class="day-pill" data-day="sun" tabindex="0" role="button" aria-label="Sunday" aria-pressed="false">S</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Hours</label>
+            <span class="sublabel">Set your working hours</span>
+            <div class="time-range">
+              <select class="time-select" id="time-from" aria-label="From time">
+                <option value="00:00">12:00 AM</option>
+                <option value="01:00">01:00 AM</option>
+                <option value="02:00">02:00 AM</option>
+                <option value="03:00">03:00 AM</option>
+                <option value="04:00">04:00 AM</option>
+                <option value="05:00">05:00 AM</option>
+                <option value="06:00">06:00 AM</option>
+                <option value="07:00">07:00 AM</option>
+                <option value="08:00" selected>08:00 AM</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="16:00">04:00 PM</option>
+                <option value="17:00">05:00 PM</option>
+                <option value="18:00">06:00 PM</option>
+                <option value="19:00">07:00 PM</option>
+                <option value="20:00">08:00 PM</option>
+                <option value="21:00">09:00 PM</option>
+                <option value="22:00">10:00 PM</option>
+                <option value="23:00">11:00 PM</option>
+              </select>
+              <span class="time-separator">to</span>
+              <select class="time-select" id="time-to" aria-label="To time">
+                <option value="00:00">12:00 AM</option>
+                <option value="01:00">01:00 AM</option>
+                <option value="02:00">02:00 AM</option>
+                <option value="03:00">03:00 AM</option>
+                <option value="04:00">04:00 AM</option>
+                <option value="05:00">05:00 AM</option>
+                <option value="06:00">06:00 AM</option>
+                <option value="07:00">07:00 AM</option>
+                <option value="08:00">08:00 AM</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="16:00">04:00 PM</option>
+                <option value="17:00">05:00 PM</option>
+                <option value="18:00" selected>06:00 PM</option>
+                <option value="19:00">07:00 PM</option>
+                <option value="20:00">08:00 PM</option>
+                <option value="21:00">09:00 PM</option>
+                <option value="22:00">10:00 PM</option>
+                <option value="23:00">11:00 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Booking Window -->
+        <div class="form-section">
+          <h2 class="form-section-title">Booking Window</h2>
+          <label class="form-label">How far ahead can appointments be booked?</label>
+          <div class="select-wrapper">
+            <select class="select-dropdown" id="booking-window" aria-label="Booking window">
+              <option value="30">30 days ahead</option>
+              <option value="60">60 days ahead</option>
+              <option value="90" selected>90 days ahead</option>
+              <option value="180">180 days ahead (6 months)</option>
+              <option value="365">1 year ahead</option>
+              <option value="unlimited">No limit</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Section 4: Buffer Time -->
+        <div class="form-section">
+          <h2 class="form-section-title">Buffer Time Between Appointments</h2>
+          <div class="inline-radio-group">
+            <label class="inline-radio-option">
+              <input type="radio" name="buffer-time" value="0">
+              <span>None</span>
+            </label>
+            <label class="inline-radio-option">
+              <input type="radio" name="buffer-time" value="5">
+              <span>5 minutes</span>
+            </label>
+            <label class="inline-radio-option selected">
+              <input type="radio" name="buffer-time" value="10" checked>
+              <span>10 minutes</span>
+            </label>
+            <label class="inline-radio-option">
+              <input type="radio" name="buffer-time" value="15">
+              <span>15 minutes</span>
+            </label>
+            <label class="inline-radio-option">
+              <input type="radio" name="buffer-time" value="30">
+              <span>30 minutes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="alert-box alert-info" style="margin-top: var(--space-2);">
+          <div style="display: flex; align-items: flex-start; gap: var(--space-2);">
+            <div class="alert-box-icon" style="font-size: 16px;">ℹ️</div>
+            <div>
+              <div class="alert-box-title" style="font-size: var(--font-size-sm);">About Buffer Time</div>
+              <p style="margin-top: 4px; line-height: var(--line-height-normal); font-size: var(--font-size-sm);">
+                Buffer time allows for preparation between patient visits, giving you time for cleanup and notes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skip Link -->
+        <div class="skip-link">
+          <button class="button-link">Skip wizard - Configure manually →</button>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="wizard-footer">
+        <div>
+          <button class="button button-secondary">← Back</button>
+        </div>
+        <div>
+          <button class="button button-primary">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Interactive functionality for the mockup
+
+    // Radio button selection styling
+    document.querySelectorAll('.inline-radio-option').forEach(option => {
+      const radio = option.querySelector('input[type="radio"]');
+
+      option.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'INPUT') {
+          radio.click();
+        }
+      });
+
+      radio.addEventListener('change', function() {
+        // Remove selected class from all options in this group
+        const group = this.name;
+        document.querySelectorAll(`input[name="${group}"]`).forEach(r => {
+          r.closest('.inline-radio-option').classList.remove('selected');
+        });
+
+        // Add selected class to this option
+        if (this.checked) {
+          this.closest('.inline-radio-option').classList.add('selected');
+        }
+      });
+    });
+
+    // Custom duration input
+    const customRadio = document.getElementById('custom-radio');
+    const customInput = document.getElementById('custom-input');
+
+    customRadio.addEventListener('change', function() {
+      customInput.disabled = !this.checked;
+      if (this.checked) {
+        customInput.focus();
+      }
+    });
+
+    // Day pills toggle
+    const dayPills = document.querySelectorAll('.day-pill');
+    dayPills.forEach(pill => {
+      pill.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        const isSelected = this.classList.contains('selected');
+        this.setAttribute('aria-pressed', isSelected);
+      });
+
+      // Keyboard accessibility
+      pill.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          this.click();
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
